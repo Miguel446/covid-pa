@@ -1,7 +1,11 @@
 const width_threshold = 480;
+var defaultOrientation = 0;
+
+window.addEventListener("orientationchange", function() {
+		location.reload();
+	}, false);
 
 function drawLineChart() {
-	console.log('desenhou');
   if ($("#lineChart").length) {
     ctxLine = document.getElementById("lineChart").getContext("2d");
     optionsLine = {
