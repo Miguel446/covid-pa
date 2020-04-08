@@ -41,13 +41,45 @@
                 <div class="tm-col tm-col-big">
                     <div class="bg-white tm-block h-100">
                         <h2 class="tm-block-title">Casos por dia</h2>
-                        <canvas id="lineChart" style="display: block; height: 220px; width: 286px;"></canvas>
+                        <canvas id="casosPorDiaChart" style="display: block; height: 220px; width: 286px;"></canvas>
                     </div>
                 </div>
                 <div class="tm-col tm-col-big">
                     <div class="bg-white tm-block h-100">
+                        <h2 class="tm-block-title">Casos acumulados</h2>
+                        <canvas id="casosAcumuladosChart" style="display: block; height: 220px; width: 286px;"></canvas>
+                    </div>
+                </div>
+                <div class="tm-col tm-col-small">
+                    <div class="bg-white tm-block h-100">
+                        <h6 class="tm-block-title">Links relevantes</h6>
+                        <h3 class="tm-block-title"><a href="https://www.youtube.com/watch?v=xLXuP4m4uQ4&t=680s"
+                                target="_blank">
+                                A importância da quarentena</a></h3>
+                        <h3 class="tm-block-title"><a href="https://www.bbc.com/portuguese/geral-52069734"
+                                target="_blank">
+                                Fim do isolamento não impede recessão econômica</a></h3>
+                        <h3 class="tm-block-title"><a href="https://www.bbc.com/portuguese/internacional-52075870"
+                                target="_blank">
+                                Estudo da quarentena durante a gripe espanhola
+                            </a></h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row tm-content-row tm-mt-big">
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
                         <h2 class="tm-block-title">Óbitos por dia</h2>
-                        <canvas id="barChart" style="display: block; height: 220px; width: 286px;"></canvas>
+                        <canvas id="obitosPorDiaChart" style="display: block; height: 220px; width: 286px;"></canvas>
+                    </div>
+                </div>
+                <div class="tm-col tm-col-big">
+                    <div class="bg-white tm-block h-100">
+                        <h2 class="tm-block-title">Óbitos acumulados</h2>
+                        <canvas id="obitosAcumuladosChart"
+                            style="display: block; height: 220px; width: 286px;"></canvas>
                     </div>
                 </div>
                 <div class="tm-col tm-col-small">
@@ -61,6 +93,7 @@
                 </div>
 
             </div>
+
             <footer class="row tm-mt-small">
                 <div class="col-12 font-weight-light">
                     <p class="d-inline-block tm-bg-black text-white py-2 px-4">
@@ -87,23 +120,25 @@
     <script src="js/tooplate-scripts.js"></script>
     <script>
         let ctxLine,
-            ctxBar,
-            ctxPie,
             optionsLine,
-            optionsBar,
-            optionsPie,
             configLine,
-            configBar,
-            configPie,
             lineChart;
-        barChart;
+        let ctxAcumuladoLine,
+            optionsAcumuladoLine,
+            configAcumuladoLine,
+            lineAcumuladoChart;
+        let ctxObitoAcumuladoLine,
+            optionsObitoAcumuladoLine,
+            configObitoAcumuladoLine,
+            lineObitoAcumuladoChart;
+        let ctxObitoDiaLine,
+            optionsObitoDiaLine,
+            configObitoDiaLine,
+            lineObitoDiaChart;
         // DOM is ready
         $(function () {
             updateChartOptions();
-            drawLineChart(); // Line Chart
-            drawBarChart(); // Bar Chart
-            //drawPieChart(); // Pie Chart
-            drawCalendar(); // Calendar
+            getData();
 
             $(window).resize(function () {
                 updateChartOptions();

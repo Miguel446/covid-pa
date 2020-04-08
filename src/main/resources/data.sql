@@ -1,0 +1,21 @@
+insert into boletim values(1, '2020-03-19', 1, 0, true, 1, 0);
+insert into boletim values(2, '2020-03-20', 1, 0, true, 2, 0);
+insert into boletim values(3, '2020-03-21', 0, 0, true, 2, 0);
+insert into boletim values(4, '2020-03-22', 2, 0, true, 4, 0);
+insert into boletim values(5, '2020-03-23', 1, 0, true, 5, 0);
+insert into boletim values(6, '2020-03-24', 0, 0, true, 5, 0);
+insert into boletim values(7, '2020-03-25', 2, 0, true, 7, 0);
+insert into boletim values(8, '2020-03-26', 6, 0, true, 13, 0);
+insert into boletim values(9, '2020-03-27', 0, 0, true, 13, 0);
+insert into boletim values(10, '2020-03-28', 4, 0, true, 17, 0);
+insert into boletim values(11, '2020-03-29', 1, 0, true, 18, 0);
+insert into boletim values(12, '2020-03-30', 3, 0, true, 21, 0);
+insert into boletim values(13, '2020-03-31', 11, 0, true, 32, 0);
+insert into boletim values(14, '2020-04-01', 8, 1, true, 40, 1);
+insert into boletim values(15, '2020-04-02', 6, 0, true, 46, 1);
+insert into boletim values(16, '2020-04-03', 4, 0, true, 50, 1);
+insert into boletim values(17, '2020-04-04', 30, 0, true, 80, 1);
+insert into boletim values(18, '2020-04-05', 6, 0, true, 86, 1);
+insert into boletim values(19, '2020-04-06', 16, 2, true, 102, 3);
+insert into boletim values(20, '2020-04-07', 36, 2, true, 138, 5);
+

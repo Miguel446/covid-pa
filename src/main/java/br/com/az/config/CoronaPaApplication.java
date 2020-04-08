@@ -13,9 +13,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 @SpringBootApplication
-@EntityScan(basePackages = { "br.com.model" })
-@ComponentScan(basePackages = { "br.com.*" })
-@EnableJpaRepositories(basePackages = { "br.com.repository" })
+@EntityScan(basePackages = { "br.com.az.model" })
+@ComponentScan(basePackages = { "br.com.az.*" })
+@EnableJpaRepositories(basePackages = { "br.com.az.repository" })
 public class CoronaPaApplication {
 
 	public static void main(String[] args) {
