@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,23 +15,23 @@
     -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
-    <link rel="stylesheet" href="css/fontawesome.min.css"  th:href="@{../css/fontawesome.min.css}">
+    <link rel="stylesheet" href="css/fontawesome.min.css" th:href="@{../css/fontawesome.min.css}">
     <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="css/fullcalendar.min.css"  th:href="@{../css/fullcalendar.min.css}">
+    <link rel="stylesheet" href="css/fullcalendar.min.css" th:href="@{../css/fullcalendar.min.css}">
     <!-- https://fullcalendar.io/ -->
-    <link rel="stylesheet" href="css/bootstrap.min.css"  th:href="@{../css/bootstrap.min.css}">
+    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{../css/bootstrap.min.css}">
     <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="css/tooplate.css"  th:href="@{../css/tooplate.css}">
+    <link rel="stylesheet" href="css/tooplate.css" th:href="@{../css/tooplate.css}">
 </head>
 
-<body id="reportsPage" style="background:#589ca7 url('dreamcodes/bg_images/color/c12.jpg') no-repeat center top;" onresize="drawLineChart();">
+<body id="reportsPage" style="background:#589ca7 url('dreamcodes/bg_images/color/c12.jpg') no-repeat center top;">
     <div class="" id="home">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <nav class="navbar navbar-expand-xl navbar-light bg-light" style="">
+                    <nav class="navbar navbar-expand-xl navbar-light bg-light">
                         <a class="navbar-brand" href="#">
-                            <h1 class="tm-site-title mb-0" > Covid-19 no Pará</h1>
+                            <h1 class="tm-site-title mb-0"> Covid-19 no Pará</h1>
                         </a>
                     </nav>
                 </div>
@@ -46,24 +47,27 @@
                 <div class="tm-col tm-col-big">
                     <div class="bg-white tm-block h-100">
                         <h2 class="tm-block-title">Óbitos por dia</h2>
-                        <canvas id="barChart"  style="display: block; height: 220px; width: 286px;"></canvas>
+                        <canvas id="barChart" style="display: block; height: 220px; width: 286px;"></canvas>
                     </div>
                 </div>
                 <div class="tm-col tm-col-small">
                     <div class="bg-white tm-block h-100">
-                    	<h2 class="tm-block-title">Fontes</h2>
-                    	<h3 class="tm-block-title" ><a href="https://covid.saude.gov.br/">Ministério da Sáude</a></h3>
-                    	<h3 class="tm-block-title"><a href="http://www.saude.pa.gov.br/coronavirus/">Secretaria de Sáude do Pará</a></h3>
-                    	<a>Atualizado em 08/04/2020 00:55</a>
+                        <h2 class="tm-block-title">Fontes</h2>
+                        <h3 class="tm-block-title"><a href="https://covid.saude.gov.br/">Ministério da Sáude</a></h3>
+                        <h3 class="tm-block-title"><a href="http://www.saude.pa.gov.br/coronavirus/">Secretaria de Sáude
+                                do Pará</a></h3>
+                        <a>Atualizado em 08/04/2020 00:55</a>
                     </div>
                 </div>
-                
+
             </div>
             <footer class="row tm-mt-small">
                 <div class="col-12 font-weight-light">
                     <p class="d-inline-block tm-bg-black text-white py-2 px-4">
                         Copyright &copy; 2020. Criado Por
-                        <a href="https://www.instagram.com/_miguel_itallo/" class="text-white tm-footer-link">Miguel Itallo</a> | Template por <a href="http://www.tooplate.com" class="text-white tm-footer-link">Toop Late</a>
+                        <a href="https://www.instagram.com/_miguel_itallo/" class="text-white tm-footer-link">Miguel
+                            Itallo</a> | Template por <a href="http://www.tooplate.com"
+                            class="text-white tm-footer-link">Toop Late</a>
                     </p>
                 </div>
             </footer>
@@ -110,4 +114,5 @@
         })
     </script>
 </body>
+
 </html>
