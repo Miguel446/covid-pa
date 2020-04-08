@@ -28,16 +28,6 @@ public class HomeController {
 	@ResponseBody
 	public List<Boletim> listar() {
 		List<Boletim> lista = boletimService.listarTodos();
-		for (Boletim b : lista) {
-			System.out.println("-----");
-			System.out.println("id: " + b.getId());
-			System.out.println("status: " + b.getStatus());
-			System.out.println("data: " + b.getData());
-			System.out.println("novos Casos: " + b.getNovosCasos());
-			System.out.println("total Casos: " + b.getTotalCasos());
-			System.out.println("novos Obitos: " + b.getNovosObitos());
-			System.out.println("total Obitos: " + b.getTotalObitos());
-		}
 		return lista;
 	}
 
