@@ -15,7 +15,7 @@ function getData() {
     type: 'GET',
     url: '/boletim',
     success: function (boletim) {
-      console.log(boletim);
+
       $.each(boletim, function (i, b) {
         data.push(ajusteDataHora(b.data));
         novosCasos.push(b.novosCasos);
