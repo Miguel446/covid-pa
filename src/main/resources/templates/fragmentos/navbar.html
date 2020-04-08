@@ -1,0 +1,98 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<meta charset="UTF-8">
+<div th:fragment="navbar">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand border-bottom navbar-dark navbar-secondary"
+    style="background-color: #11540F;">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        
+        <div class="dropdown-menu dropdown-menu-lg 
+        dropdown-menu-right">
+        
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+       
+      </li>
+
+      <li>
+        <img th:src="@{/dist/img/bola.png}" alt="Arena Brasil" class="brand-image elevation-3"
+          style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius: 50px; width: 58px; height: 56px">
+      </li>
+    </ul>
+
+  </nav>
+  <!-- /.navbar -->
+  <div class="alert alert-success float" role="alert">
+    <span id="msgOk"></span>
+  </div>
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4 btn-success" style="background-color: #11540F;">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <span class="brand-text" style="font-size: 30px; font-family: 'Righteous', cursive;">
+        <center>Arena Brasil</center>
+      </span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-header">MENU</li>
+          
+          <li class="nav-item">
+            <a href="/" class="nav-link">
+              <i style="font-size:16px" class="fa">&#xf073;</i>
+              <p> Calendário </p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="/relatorio/listar" class="nav-link">
+              <i class="fas fa-chart-line"></i>
+              <p> Relatório </p>
+            </a>
+          </li>
+
+         
+          <!-- <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_FINANCEIRO', 'ROLE_GERENCIA')" class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+              <p>
+                Configuração
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            
+          </li> -->
+          <li class="nav-item">
+            <a href="/logout" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i>
+              <p>
+                Sair
+                
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+</div>
