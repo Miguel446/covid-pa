@@ -11,7 +11,7 @@ const getRegression = (data, degre) => {
   data.forEach((element, index) => dataRegression.push([index + 1, element]));
 
   let resultRegression = [];
-  regression('exponential', data).points.forEach((element) =>
+  regression('polynomial', data, degre).points.forEach((element) =>
     resultRegression.push(Math.ceil(element[1] * 100) / 100)
   );
 
@@ -44,7 +44,7 @@ function getData() {
         }
 
       });
-      var curvaContagio = getRegression(r, 3);
+      var curvaContagio = getRegression(r, 2);
 
       drawCasosPorDiaChart(data, novosCasos, curvaContagio);
       drawCasosAcumuladosChart(data, totalCasos);
