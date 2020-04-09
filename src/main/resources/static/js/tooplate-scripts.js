@@ -5,12 +5,27 @@ window.addEventListener("orientationchange", function () {
   location.reload();
 }, false);
 
+const getRegression = (data, degre) => {
+  degre = degre || 2;
+  let dataRegression = [];
+  data.forEach((element, index) => dataRegression.push([index + 1, element]));
+
+  let resultRegression = [];
+  regression('exponential', data).points.forEach((element) =>
+    resultRegression.push(Math.ceil(element[1] * 100) / 100)
+  );
+
+  return resultRegression;
+};
+
 function getData() {
   var data = [];
   var novosCasos = [];
   var totalCasos = [];
   var novosObitos = [];
   var totalObitos = [];
+  var r = [];
+
   $.ajax({
     type: 'GET',
     url: '/boletim',
@@ -22,9 +37,16 @@ function getData() {
         totalCasos.push(b.totalCasos);
         novosObitos.push(b.novosObitos);
         totalObitos.push(b.totalObitos);
-      });
+        if (b.novosCasos == 0) {
+          r.push([i, 0.1]);
+        } else {
+          r.push([i, b.novosCasos]);
+        }
 
-      drawCasosPorDiaChart(data, novosCasos);
+      });
+      var curvaContagio = getRegression(r, 3);
+
+      drawCasosPorDiaChart(data, novosCasos, curvaContagio);
       drawCasosAcumuladosChart(data, totalCasos);
       drawObitosPorDiaChart(data, novosObitos);
       drawObitosAcumuladosChart(data, totalObitos);
@@ -32,7 +54,7 @@ function getData() {
   });
 }
 
-function drawCasosPorDiaChart(data, novosCasos) {
+function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
   if ($("#casosPorDiaChart").length) {
     ctxLine = document.getElementById("casosPorDiaChart").getContext("2d");
     optionsLine = {
@@ -62,7 +84,13 @@ function drawCasosPorDiaChart(data, novosCasos) {
             fill: false,
             borderColor: "rgb(75, 192, 192)",
             lineTension: 0.1
-          },
+          }, {
+            label: "Curva de contágio*",
+            data: curvaContagio,
+            fill: false,
+            borderColor: "rgba(255,99,132,1)",
+            lineTension: 0.1
+          }
         ]
       },
       options: optionsLine
