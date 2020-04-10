@@ -14,7 +14,6 @@ const getRegression = (data, degre) => {
   regression('polynomial', data, degre).points.forEach((element) =>
     resultRegression.push(Math.ceil(element[1] * 100) / 100)
   );
-  console.log(regression('polynomial', data, degre));
 
   return resultRegression;
 };
@@ -92,7 +91,7 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
       $(window).width() < width_threshold ? false : true;
 
     configLine = {
-      type: "line",
+      type: "bar",
       data: {
         labels: data,
         datasets: [
@@ -100,14 +99,19 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
             label: "Total",
             data: novosCasos,
             fill: false,
-            borderColor: "rgb(75, 192, 192)",
-            lineTension: 0.1
+            borderColor: "rgb(75, 192, 192,0.8)",
+            backgroundColor: "rgb(75, 192, 192,0.8)",
+            lineTension: 0.1,
+            order: 0
           }, {
             label: "Curva de contágio*",
             data: curvaContagio,
             fill: false,
             borderColor: "rgba(255,99,132,1)",
-            lineTension: 0.1
+            backgroundColor: "rgba(255,99,132,1)",
+            lineTension: 0.1,
+            type: 'line',
+            order: 2
           }
         ]
       },
@@ -120,8 +124,8 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
 
 function drawObitosPorDiaChart(data, novosObitos) {
   if ($("#obitosPorDiaChart").length) {
-    ctxObitoDiaLine = document.getElementById("obitosPorDiaChart").getContext("2d");
-    optionsObitoDiaLine = {
+    ctxLine = document.getElementById("obitosPorDiaChart").getContext("2d");
+    optionsLine = {
       scales: {
         yAxes: [
           {
@@ -134,11 +138,11 @@ function drawObitosPorDiaChart(data, novosObitos) {
       }
     };
 
-    optionsObitoDiaLine.maintainAspectRatio =
+    optionsLine.maintainAspectRatio =
       $(window).width() < width_threshold ? false : true;
 
-    configObitoDiaLine = {
-      type: "line",
+    configLine = {
+      type: "bar",
       data: {
         labels: data,
         datasets: [
@@ -146,22 +150,23 @@ function drawObitosPorDiaChart(data, novosObitos) {
             label: "Total",
             data: novosObitos,
             fill: false,
-            borderColor: "rgb(75, 192, 192)",
+            borderColor: "rgb(75, 192, 192, 1)",
+            backgroundColor: "rgb(75, 192, 192, 1)",
             lineTension: 0.1
           }
         ]
       },
-      options: optionsObitoDiaLine
+      options: optionsLine
     };
 
-    lineObitoDiaChart = new Chart(ctxObitoDiaLine, configObitoDiaLine);
+    lineChart = new Chart(ctxLine, configLine);
   }
 }
 
 function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
   if ($("#casosAcumuladosChart").length) {
-    ctxAcumuladoLine = document.getElementById("casosAcumuladosChart").getContext("2d");
-    optionsAcumuladoLine = {
+    ctxLine = document.getElementById("casosAcumuladosChart").getContext("2d");
+    optionsLine = {
       scales: {
         yAxes: [
           {
@@ -175,10 +180,10 @@ function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
     };
 
     // Set aspect ratio based on window width
-    optionsAcumuladoLine.maintainAspectRatio =
+    optionsLine.maintainAspectRatio =
       $(window).width() < width_threshold ? false : true;
 
-    configAcumuladoLine = {
+    configLine = {
       type: "line",
       data: {
         labels: data,
@@ -187,7 +192,8 @@ function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
             label: "Total",
             data: totalCasos,
             fill: false,
-            borderColor: "rgb(75, 192, 192)",
+            borderColor: "rgb(75, 192, 192, 0.8)",
+            backgroundColor: "rgb(75, 192, 192, 0.8)",
             lineTension: 0.1
           },
           {
@@ -195,38 +201,23 @@ function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
             data: curvaContagio,
             fill: false,
             borderColor: "rgba(255,99,132,1)",
+            backgroundColor: "rgba(255,99,132,1)",
             lineTension: 0.1
           }
-          /*
-          {
-            label: "Popular Hits",
-            data: [33, 45, 37, 21, 55, 74, 69],
-            fill: false,
-            borderColor: "rgba(255,99,132,1)",
-            lineTension: 0.1
-          },
-          {
-            label: "Featured",
-            data: [44, 19, 38, 46, 85, 66, 79],
-            fill: false,
-            borderColor: "rgba(153, 102, 255, 1)",
-            lineTension: 0.1
-          }
-          */
         ]
       },
-      options: optionsAcumuladoLine
+      options: optionsLine
     };
 
-    lineAcumuladoChart = new Chart(ctxAcumuladoLine, configAcumuladoLine);
+    lineChart = new Chart(ctxLine, configLine);
   }
 }
 
 
 function drawObitosAcumuladosChart(data, totalObitos) {
   if ($("#obitosAcumuladosChart").length) {
-    ctxObitoAcumuladoLine = document.getElementById("obitosAcumuladosChart").getContext("2d");
-    optionsObitoAcumuladoLine = {
+    ctxLine = document.getElementById("obitosAcumuladosChart").getContext("2d");
+    optionsLine = {
       scales: {
         yAxes: [
           {
@@ -240,10 +231,10 @@ function drawObitosAcumuladosChart(data, totalObitos) {
     };
 
     // Set aspect ratio based on window width
-    optionsObitoAcumuladoLine.maintainAspectRatio =
+    optionsLine.maintainAspectRatio =
       $(window).width() < width_threshold ? false : true;
 
-    configObitoAcumuladoLine = {
+    configLine = {
       type: "line",
       data: {
         labels: data,
@@ -253,30 +244,15 @@ function drawObitosAcumuladosChart(data, totalObitos) {
             data: totalObitos,
             fill: false,
             borderColor: "rgb(75, 192, 192)",
+            backgroundColor: "rgb(75, 192, 192)",
             lineTension: 0.1
           },
-          /*
-          {
-            label: "Popular Hits",
-            data: [33, 45, 37, 21, 55, 74, 69],
-            fill: false,
-            borderColor: "rgba(255,99,132,1)",
-            lineTension: 0.1
-          },
-          {
-            label: "Featured",
-            data: [44, 19, 38, 46, 85, 66, 79],
-            fill: false,
-            borderColor: "rgba(153, 102, 255, 1)",
-            lineTension: 0.1
-          }
-          */
         ]
       },
-      options: optionsObitoAcumuladoLine
+      options: optionsLine
     };
 
-    lineObitoAcumuladoChart = new Chart(ctxObitoAcumuladoLine, configObitoAcumuladoLine);
+    lineChart = new Chart(ctxLine, configLine);
   }
 }
 
@@ -296,13 +272,6 @@ function updateLineChart() {
   if (lineChart) {
     lineChart.options = optionsLine;
     lineChart.update();
-  }
-}
-
-function updateBarChart() {
-  if (barChart) {
-    barChart.options = optionsBar;
-    barChart.update();
   }
 }
 

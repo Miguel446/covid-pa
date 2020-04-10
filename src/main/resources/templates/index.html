@@ -126,18 +126,6 @@
             optionsLine,
             configLine,
             lineChart;
-        let ctxAcumuladoLine,
-            optionsAcumuladoLine,
-            configAcumuladoLine,
-            lineAcumuladoChart;
-        let ctxObitoAcumuladoLine,
-            optionsObitoAcumuladoLine,
-            configObitoAcumuladoLine,
-            lineObitoAcumuladoChart;
-        let ctxObitoDiaLine,
-            optionsObitoDiaLine,
-            configObitoDiaLine,
-            lineObitoDiaChart;
         // DOM is ready
         $(function () {
             updateChartOptions();
@@ -146,7 +134,6 @@
             $(window).resize(function () {
                 updateChartOptions();
                 updateLineChart();
-                updateBarChart();
                 reloadPage();
             });
         })
