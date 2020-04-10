@@ -5,16 +5,13 @@ window.addEventListener("orientationchange", function () {
   location.reload();
 }, false);
 
-const getRegression = (data, degre) => {
+const getPolynomialRegression = (data, degre) => {
   degre = degre || 2;
-  let dataRegression = [];
-  data.forEach((element, index) => dataRegression.push([index + 1, element]));
-
   let resultRegression = [];
+
   regression('polynomial', data, degre).points.forEach((element) =>
     resultRegression.push(Math.ceil(element[1] * 100) / 100)
   );
-
   return resultRegression;
 };
 
@@ -30,43 +27,47 @@ const getExponentialRegression = (data) => {
 };
 
 function getData() {
-  var data = [];
+  var vetorDatas = [];
+
   var novosCasos = [];
   var totalCasos = [];
   var novosObitos = [];
   var totalObitos = [];
-  var r = [];
-  var r2 = [];
+
+  var arrayRegressaoPolinomial = [];
+  var arrayRegressaoExponencial = [];
 
   $.ajax({
     type: 'GET',
     url: '/boletim',
-    success: function (boletim) {
+    success: function (listaBoletim) {
 
-      $.each(boletim, function (i, b) {
-        data.push(ajusteDataHora(b.data));
+      $.each(listaBoletim, function (i, b) {
+        vetorDatas.push(ajusteDataHora(b.data));
+
         novosCasos.push(b.novosCasos);
         totalCasos.push(b.totalCasos);
         novosObitos.push(b.novosObitos);
         totalObitos.push(b.totalObitos);
+
+        arrayRegressaoPolinomial.push([i, b.novosCasos]);
+
         if (b.novosCasos == 0) {
-          r.push([i, 0]);
-          r2.push(0.1);
+          arrayRegressaoExponencial.push(0.1);
         } else {
-          r.push([i, b.novosCasos]);
-          r2.push(b.totalCasos);
+          arrayRegressaoExponencial.push(b.totalCasos);
         }
 
       });
 
-      var curvaContagio = getRegression(r, 2);
-      var expContagio = getExponentialRegression(r2);
+      var regressaoPolinomial = getPolynomialRegression(arrayRegressaoPolinomial, 2);
+      var regressaoExponencial = getExponentialRegression(arrayRegressaoExponencial);
 
-      drawCasosPorDiaChart(data, novosCasos, curvaContagio);
-      drawCasosAcumuladosChart(data, totalCasos, expContagio);
+      drawCasosPorDiaChart(vetorDatas, novosCasos, regressaoPolinomial);
+      drawCasosAcumuladosChart(vetorDatas, totalCasos, regressaoExponencial);
 
-      drawObitosPorDiaChart(data, novosObitos);
-      drawObitosAcumuladosChart(data, totalObitos);
+      drawObitosPorDiaChart(vetorDatas, novosObitos);
+      drawObitosAcumuladosChart(vetorDatas, totalObitos);
     }
   });
 }
@@ -102,7 +103,6 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
             borderColor: "rgb(75, 192, 192,0.8)",
             backgroundColor: "rgb(75, 192, 192,0.8)",
             lineTension: 0.1,
-            order: 0
           }, {
             label: "Curva de contágio*",
             data: curvaContagio,
@@ -111,7 +111,6 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
             backgroundColor: "rgba(255,99,132,1)",
             lineTension: 0.1,
             type: 'line',
-            order: 2
           }
         ]
       },
@@ -287,6 +286,7 @@ function ajusteDataHora(data) {
   var ano = data.year;
   var hora = data.hour;
   var minuto = data.minute;
+
   if (dia < 10) {
     dia = "0" + dia;
   }
