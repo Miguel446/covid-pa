@@ -14,7 +14,19 @@ const getRegression = (data, degre) => {
   regression('polynomial', data, degre).points.forEach((element) =>
     resultRegression.push(Math.ceil(element[1] * 100) / 100)
   );
+  console.log(regression('polynomial', data, degre));
 
+  return resultRegression;
+};
+
+const getExponentialRegression = (data) => {
+  let dataRegression = [];
+  data.forEach((element, index) => dataRegression.push([index + 1, element]));
+
+  let resultRegression = [];
+  regression('exponential', dataRegression).points.forEach((element) =>
+    resultRegression.push(Math.ceil(element[1] * 100) / 100)
+  );
   return resultRegression;
 };
 
@@ -25,6 +37,7 @@ function getData() {
   var novosObitos = [];
   var totalObitos = [];
   var r = [];
+  var r2 = [];
 
   $.ajax({
     type: 'GET',
@@ -38,16 +51,21 @@ function getData() {
         novosObitos.push(b.novosObitos);
         totalObitos.push(b.totalObitos);
         if (b.novosCasos == 0) {
-          r.push([i, 0.1]);
+          r.push([i, 0]);
+          r2.push(0.1);
         } else {
           r.push([i, b.novosCasos]);
+          r2.push(b.totalCasos);
         }
 
       });
+
       var curvaContagio = getRegression(r, 2);
+      var expContagio = getExponentialRegression(r2);
 
       drawCasosPorDiaChart(data, novosCasos, curvaContagio);
-      drawCasosAcumuladosChart(data, totalCasos);
+      drawCasosAcumuladosChart(data, totalCasos, expContagio);
+
       drawObitosPorDiaChart(data, novosObitos);
       drawObitosAcumuladosChart(data, totalObitos);
     }
@@ -130,7 +148,7 @@ function drawObitosPorDiaChart(data, novosObitos) {
             fill: false,
             borderColor: "rgb(75, 192, 192)",
             lineTension: 0.1
-          },
+          }
         ]
       },
       options: optionsObitoDiaLine
@@ -140,7 +158,7 @@ function drawObitosPorDiaChart(data, novosObitos) {
   }
 }
 
-function drawCasosAcumuladosChart(data, totalCasos) {
+function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
   if ($("#casosAcumuladosChart").length) {
     ctxAcumuladoLine = document.getElementById("casosAcumuladosChart").getContext("2d");
     optionsAcumuladoLine = {
@@ -172,6 +190,13 @@ function drawCasosAcumuladosChart(data, totalCasos) {
             borderColor: "rgb(75, 192, 192)",
             lineTension: 0.1
           },
+          {
+            label: "Curva de contágio*",
+            data: curvaContagio,
+            fill: false,
+            borderColor: "rgba(255,99,132,1)",
+            lineTension: 0.1
+          }
           /*
           {
             label: "Popular Hits",
