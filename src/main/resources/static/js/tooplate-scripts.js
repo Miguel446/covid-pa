@@ -267,19 +267,6 @@ function updateChartOptions() {
   }
 }
 
-function updateLineChart() {
-  if (lineChart) {
-    lineChart.options = optionsLine;
-    lineChart.update();
-  }
-}
-
-function reloadPage() {
-  setTimeout(function () {
-    window.location.reload();
-  }); // Reload the page so that charts will display correctly
-}
-
 function ajusteDataHora(data) {
   var dia = data.dayOfMonth;
   var mes = data.monthValue;
