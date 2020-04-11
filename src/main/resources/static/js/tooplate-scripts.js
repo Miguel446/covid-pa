@@ -104,7 +104,7 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
             backgroundColor: "rgb(75, 192, 192,0.8)",
             lineTension: 0.1,
           }, {
-            label: "Curva de contágio*",
+            label: "Tendência*",
             data: curvaContagio,
             fill: false,
             borderColor: "rgba(255,99,132,1)",
@@ -196,7 +196,7 @@ function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
             lineTension: 0.1
           },
           {
-            label: "Curva de contágio*",
+            label: "Tendência*",
             data: curvaContagio,
             fill: false,
             borderColor: "rgba(255,99,132,1)",
