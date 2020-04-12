@@ -27,22 +27,26 @@ const getExponentialRegression = (data) => {
 };
 
 function getData() {
-  var vetorDatas = [];
+  let vetorDatas = [];
 
-  var novosCasos = [];
-  var totalCasos = [];
-  var novosObitos = [];
-  var totalObitos = [];
+  let novosCasos = [];
+  let totalCasos = [];
+  let novosObitos = [];
+  let totalObitos = [];
 
-  var arrayRegressaoPolinomial = [];
-  var arrayRegressaoExponencial = [];
+  let arrayRegressaoPolinomial = [];
+  let arrayRegressaoExponencial = [];
 
   $.ajax({
     type: 'GET',
     url: '/boletim',
-    success: function (listaBoletim) {
+    success: function (boletim) {
 
-      $.each(listaBoletim, function (i, b) {
+      let b = [];
+      let len = boletim.length;
+
+      for (let i = 0; i < len; i++) {
+        b = boletim[i];
         vetorDatas.push(ajusteDataHora(b.data));
 
         novosCasos.push(b.novosCasos);
@@ -52,16 +56,16 @@ function getData() {
 
         arrayRegressaoPolinomial.push([i, b.novosCasos]);
 
-        if (b.novosCasos == 0) {
+        if (b.novosCasos === 0) {
           arrayRegressaoExponencial.push(0.1);
         } else {
           arrayRegressaoExponencial.push(b.totalCasos);
         }
 
-      });
+      }
 
-      var regressaoPolinomial = getPolynomialRegression(arrayRegressaoPolinomial, 2);
-      var regressaoExponencial = getExponentialRegression(arrayRegressaoExponencial);
+      let regressaoPolinomial = getPolynomialRegression(arrayRegressaoPolinomial, 2);
+      let regressaoExponencial = getExponentialRegression(arrayRegressaoExponencial);
 
       drawCasosPorDiaChart(vetorDatas, novosCasos, regressaoPolinomial);
       drawCasosAcumuladosChart(vetorDatas, totalCasos, regressaoExponencial);
