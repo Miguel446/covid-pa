@@ -56,11 +56,7 @@ function getData() {
 
         arrayRegressaoPolinomial.push([i, b.novosCasos]);
 
-        if (b.novosCasos === 0) {
-          arrayRegressaoExponencial.push(0.1);
-        } else {
-          arrayRegressaoExponencial.push(b.totalCasos);
-        }
+        b.novosCasos === 0 ? arrayRegressaoExponencial.push(0.1) : arrayRegressaoExponencial.push(b.totalCasos);
 
       }
 
