@@ -23,5 +23,6 @@ insert into boletim values(22, '2020-04-09', 4, 1, true, 169, 7);
 insert into boletim values(23, '2020-04-10', 48, 2, true, 217, 9);
 insert into boletim values(24, '2020-04-11', 20, 2, true, 237, 11);
 insert into boletim values(25, '2020-04-12', 22, 3, true, 259, 14);
+insert into boletim values(26, '2020-04-13', 51, 0, true, 310, 14);
 
 
