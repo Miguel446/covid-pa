@@ -31,5 +31,6 @@ insert into boletim values(30, '2020-04-17', 70, 6, true, 627, 32);
 insert into boletim values(31, '2020-04-18', 14, 1, true, 641, 33);
 insert into boletim values(32, '2020-04-19', 44, 1, true, 685, 34);
 insert into boletim values(33, '2020-04-20', 217, 1, true, 902, 35);
+insert into boletim values(34, '2020-04-21', 124, 3, true, 1026, 38);
 
 
