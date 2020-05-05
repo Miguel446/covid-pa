@@ -60,7 +60,7 @@ function getData() {
 
       }
 
-      let regressaoPolinomial = getPolynomialRegression(arrayRegressaoPolinomial, 2);
+      let regressaoPolinomial = getPolynomialRegression(arrayRegressaoPolinomial, 3);
       let regressaoExponencial = getExponentialRegression(arrayRegressaoExponencial);
 
       drawCasosPorDiaChart(vetorDatas, novosCasos, regressaoPolinomial);
