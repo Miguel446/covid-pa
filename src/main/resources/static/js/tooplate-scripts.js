@@ -85,7 +85,30 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
             }
           }
         ]
-      }
+      },
+      annotation: {//TODO adicionar hover em label lockdown
+          annotations: [
+            {
+              drawTime: "afterDatasetsDraw",
+              id: "hline",
+              type: "line",
+              mode: "vertical",
+              scaleID: "x-axis-0",
+              value: "05/05/2020",
+              borderColor: "rgba(120,120,120,0.7)",
+              borderWidth: 1.5,
+              label: {
+            	position: "bottom",
+            	xAdjust: 30,
+            	yAdjust: 10,
+            	fontSize: 10,
+                backgroundColor: "rgba(255,80,112,0.9)",
+                content: "Lockdown",
+                enabled: true
+              },
+            },
+          ]
+        }
     };
 
     optionsLine.maintainAspectRatio =
@@ -175,7 +198,30 @@ function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
             }
           }
         ]
-      }
+      },
+      annotation: {//TODO adicionar hover em label lockdown
+          annotations: [
+            {
+              drawTime: "afterDatasetsDraw",
+              id: "hline2",
+              type: "line",
+              mode: "vertical",
+              scaleID: "x-axis-0",
+              value: "05/05/2020",
+              borderColor: "rgba(120,120,120,0.7)",
+              borderWidth: 1.5,
+              label: {
+            	position: "bottom",
+            	xAdjust: 30,
+            	yAdjust: 10,
+            	fontSize: 10,
+                backgroundColor: "rgba(255,80,112,0.9)",
+                content: "Lockdown",
+                enabled: true
+              },
+            },
+          ]
+        }
     };
 
     // Set aspect ratio based on window width
