@@ -17,8 +17,26 @@ public class Boletim {
 	private LocalDate dataBoletim;
 	private Long novosCasos;
 	private Long novosObitos;
+	private Long novosSrag;
 	private Long totalCasos;
 	private Long totalObitos;
+	private Long totalSrag;
+
+	public Long getNovosSrag() {
+		return novosSrag;
+	}
+
+	public void setNovosSrag(Long novosSrag) {
+		this.novosSrag = novosSrag;
+	}
+
+	public Long getTotalSrag() {
+		return totalSrag;
+	}
+
+	public void setTotalSrag(Long totalSrag) {
+		this.totalSrag = totalSrag;
+	}
 
 	public Long getId() {
 		return id;

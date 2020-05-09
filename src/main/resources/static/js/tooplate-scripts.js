@@ -31,8 +31,12 @@ function getData() {
 
   let novosCasos = [];
   let totalCasos = [];
+
   let novosObitos = [];
   let totalObitos = [];
+
+  let novosSrag = [];
+  let totalSrag = [];
 
   let arrayRegressaoPolinomial = [];
   let arrayRegressaoExponencial = [];
@@ -51,8 +55,12 @@ function getData() {
 
         novosCasos.push(b.novosCasos);
         totalCasos.push(b.totalCasos);
+
         novosObitos.push(b.novosObitos);
         totalObitos.push(b.totalObitos);
+
+        novosSrag.push(b.novosSrag);
+        totalSrag.push(b.totalSrag);
 
         arrayRegressaoPolinomial.push([i, b.novosCasos]);
 
@@ -66,8 +74,8 @@ function getData() {
       drawCasosPorDiaChart(vetorDatas, novosCasos, regressaoPolinomial);
       drawCasosAcumuladosChart(vetorDatas, totalCasos, regressaoExponencial);
 
-      drawObitosPorDiaChart(vetorDatas, novosObitos);
-      drawObitosAcumuladosChart(vetorDatas, totalObitos);
+      drawObitosPorDiaChart(vetorDatas, novosObitos, novosSrag);
+      drawObitosAcumuladosChart(vetorDatas, totalObitos, totalSrag);
     }
   });
 }
@@ -144,7 +152,7 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
   }
 }
 
-function drawObitosPorDiaChart(data, novosObitos) {
+function drawObitosPorDiaChart(data, novosObitos, novosSrag) {
   if ($("#obitosPorDiaChart").length) {
     ctxLine = document.getElementById("obitosPorDiaChart").getContext("2d");
     optionsLine = {
@@ -164,17 +172,24 @@ function drawObitosPorDiaChart(data, novosObitos) {
       $(window).width() < width_threshold ? false : true;
 
     configLine = {
-      type: "bar",
+      type: "line",
       data: {
         labels: data,
         datasets: [
           {
-            label: "Total",
+            label: "Covid-19",
             data: novosObitos,
             fill: false,
             borderColor: "rgb(75, 192, 192, 1)",
             backgroundColor: "rgb(75, 192, 192, 1)",
             lineTension: 0.1
+          }, {
+            label: "SRAG**",
+            data: novosSrag,
+            fill: false,
+            borderColor: "rgba(135, 135, 135,1)",
+            backgroundColor: "rgba(135, 135, 135,1)",
+            lineTension: 0.1,
           }
         ]
       },
@@ -259,7 +274,7 @@ function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
 }
 
 
-function drawObitosAcumuladosChart(data, totalObitos) {
+function drawObitosAcumuladosChart(data, totalObitos, totalSrag) {
   if ($("#obitosAcumuladosChart").length) {
     ctxLine = document.getElementById("obitosAcumuladosChart").getContext("2d");
     optionsLine = {
@@ -285,13 +300,20 @@ function drawObitosAcumuladosChart(data, totalObitos) {
         labels: data,
         datasets: [
           {
-            label: "Total",
+            label: "Covid-19",
             data: totalObitos,
             fill: false,
             borderColor: "rgb(75, 192, 192)",
             backgroundColor: "rgb(75, 192, 192)",
             lineTension: 0.1
-          },
+          }, {
+            label: "SRAG**",
+            data: totalSrag,
+            fill: false,
+            borderColor: "rgba(135, 135, 135,1)",
+            backgroundColor: "rgba(135, 135, 135,1)",
+            lineTension: 0.1,
+          }
         ]
       },
       options: optionsLine
