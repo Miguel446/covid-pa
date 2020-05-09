@@ -16,8 +16,8 @@ public class Boletim {
 
 	private LocalDate dataBoletim;
 	private Long novosCasos;
-	private Long totalCasos;
 	private Long novosObitos;
+	private Long totalCasos;
 	private Long totalObitos;
 
 	public Long getId() {
