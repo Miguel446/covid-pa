@@ -58,4 +58,5 @@ insert into boletim values(56, '2020-05-13', 1285, 108, 0,  true, 10344, 1022, 1
 insert into boletim values(57, '2020-05-14', 1135, 73, 0,  true, 11479, 1095, 133);
 insert into boletim values(58, '2020-05-15', 1147, 80, 0,  true, 12626, 1175, 133);
 insert into boletim values(59, '2020-05-16', 838, 48, 0,  true, 13464, 1223, 133);
+insert into boletim values(60, '2020-05-17', 737, 57, 0,  true, 14201, 1280, 133);
 
