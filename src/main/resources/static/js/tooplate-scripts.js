@@ -35,9 +35,6 @@ function getData() {
   let novosObitos = [];
   let totalObitos = [];
 
-  let novosSrag = [];
-  let totalSrag = [];
-
   let arrayRegressaoPolinomial = [];
   let arrayRegressaoExponencial = [];
 
@@ -59,9 +56,6 @@ function getData() {
         novosObitos.push(b.novosObitos);
         totalObitos.push(b.totalObitos);
 
-        novosSrag.push(b.novosSrag);
-        totalSrag.push(b.totalSrag);
-
         arrayRegressaoPolinomial.push([i, b.novosCasos]);
 
         b.novosCasos === 0 ? arrayRegressaoExponencial.push(0.1) : arrayRegressaoExponencial.push(b.totalCasos);
@@ -74,8 +68,8 @@ function getData() {
       drawCasosPorDiaChart(vetorDatas, novosCasos, regressaoPolinomial);
       drawCasosAcumuladosChart(vetorDatas, totalCasos, regressaoExponencial);
 
-      drawObitosPorDiaChart(vetorDatas, novosObitos, novosSrag);
-      drawObitosAcumuladosChart(vetorDatas, totalObitos, totalSrag);
+      drawObitosPorDiaChart(vetorDatas, novosObitos);
+      drawObitosAcumuladosChart(vetorDatas, totalObitos);
     }
   });
 }
@@ -107,8 +101,8 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
             borderWidth: 1.5,
             label: {
               position: "center",
-              yAdjust: 60,
-              xAdjust: -30,
+              yAdjust: -50,
+              xAdjust: 0,
               fontSize: 10,
               backgroundColor: "rgba(255,80,112,0.9)",
               content: "Lockdown",
@@ -172,7 +166,7 @@ function drawObitosPorDiaChart(data, novosObitos, novosSrag) {
       $(window).width() < width_threshold ? false : true;
 
     configLine = {
-      type: "line",
+      type: "bar",
       data: {
         labels: data,
         datasets: [
@@ -183,13 +177,6 @@ function drawObitosPorDiaChart(data, novosObitos, novosSrag) {
             borderColor: "rgb(75, 192, 192, 1)",
             backgroundColor: "rgb(75, 192, 192, 1)",
             lineTension: 0.1
-          }, {
-            label: "SRAG**",
-            data: novosSrag,
-            fill: false,
-            borderColor: "rgba(135, 135, 135,1)",
-            backgroundColor: "rgba(135, 135, 135,1)",
-            lineTension: 0.1,
           }
         ]
       },
@@ -227,8 +214,8 @@ function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
             borderWidth: 1.5,
             label: {
               position: "center",
-              yAdjust: 60,
-              xAdjust: -30,
+              yAdjust: -50,
+              xAdjust: 0,
               fontSize: 10,
               backgroundColor: "rgba(255,80,112,0.9)",
               content: "Lockdown",
@@ -306,13 +293,6 @@ function drawObitosAcumuladosChart(data, totalObitos, totalSrag) {
             borderColor: "rgb(75, 192, 192)",
             backgroundColor: "rgb(75, 192, 192)",
             lineTension: 0.1
-          }, {
-            label: "SRAG**",
-            data: totalSrag,
-            fill: false,
-            borderColor: "rgba(135, 135, 135,1)",
-            backgroundColor: "rgba(135, 135, 135,1)",
-            lineTension: 0.1,
           }
         ]
       },
