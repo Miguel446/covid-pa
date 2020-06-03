@@ -74,3 +74,4 @@ insert into boletim values(72, '2020-05-29', 2164, 115, true, 37296, 2900);
 insert into boletim values(73, '2020-05-30', 563, 20, true, 37859, 2920);
 insert into boletim values(74, '2020-05-31', 187, 5, true, 38046, 2925);
 insert into boletim values(75, '2020-06-01', 3161, 115, true, 41207, 3040);
+insert into boletim values(76, '2020-06-02', 2445, 104, true, 43652, 3144);
