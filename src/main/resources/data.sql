@@ -79,3 +79,4 @@ insert into boletim values(77, '2020-06-03', 2821, 101, true, 46473, 3245);
 insert into boletim values(78, '2020-06-04', 3000, 247, true, 49473, 3492);
 insert into boletim values(79, '2020-06-05', 3150, 81, true, 52623, 3573);
 insert into boletim values(80, '2020-06-06', 1237, 92, true, 53860, 3665);
+insert into boletim values(81, '2020-06-07', 938, 49, true, 54798, 3714);
