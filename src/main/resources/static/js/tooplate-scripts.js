@@ -88,29 +88,6 @@ function drawCasosPorDiaChart(data, novosCasos, curvaContagio) {
           }
         ]
       },
-      annotation: {
-        annotations: [
-          {
-            drawTime: "afterDatasetsDraw",
-            id: "hline",
-            type: "line",
-            mode: "vertical",
-            scaleID: "x-axis-0",
-            value: "07/05/2020",
-            borderColor: "rgba(120,120,120,0.7)",
-            borderWidth: 1.5,
-            label: {
-              position: "center",
-              yAdjust: -50,
-              xAdjust: 0,
-              fontSize: 10,
-              backgroundColor: "rgba(255,80,112,0.9)",
-              content: "Lockdown",
-              enabled: true
-            },
-          },
-        ]
-      }
     };
 
     optionsLine.maintainAspectRatio =
@@ -199,29 +176,6 @@ function drawCasosAcumuladosChart(data, totalCasos, curvaContagio) {
               labelString: "Nº de casos"
             }
           }
-        ]
-      },
-      annotation: {//TODO adicionar hover em label lockdown
-        annotations: [
-          {
-            drawTime: "afterDatasetsDraw",
-            id: "hline2",
-            type: "line",
-            mode: "vertical",
-            scaleID: "x-axis-0",
-            value: "07/05/2020",
-            borderColor: "rgba(120,120,120,0.7)",
-            borderWidth: 1.5,
-            label: {
-              position: "center",
-              yAdjust: -50,
-              xAdjust: 0,
-              fontSize: 10,
-              backgroundColor: "rgba(255,80,112,0.9)",
-              content: "Lockdown",
-              enabled: true
-            },
-          },
         ]
       }
     };
