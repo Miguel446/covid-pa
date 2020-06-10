@@ -12,6 +12,7 @@ insert into boletim values(11, '2020-03-29', 2, 0, true, 19, 0);
 insert into boletim values(12, '2020-03-30', 7, 0, true, 26, 0);
 insert into boletim values(13, '2020-03-31', 8, 0, true, 34, 0);
 */
+/*
 insert into boletim values(14, '2020-04-01', 7, 1, true, 41, 1);
 insert into boletim values(15, '2020-04-02', 7, 0, true, 48, 1);
 insert into boletim values(16, '2020-04-03', 27, 0,true, 75, 1);
@@ -42,6 +43,7 @@ insert into boletim values(40, '2020-04-27', 261, 14, true, 2128, 114);
 insert into boletim values(41, '2020-04-28', 191, 18, true, 2319, 132);
 insert into boletim values(42, '2020-04-29', 267, 24, true, 2586, 156);
 insert into boletim values(43, '2020-04-30', 413, 68, true, 2999, 224);
+*/
 insert into boletim values(44, '2020-05-01', 360, 39, true, 3359, 263);
 insert into boletim values(45, '2020-05-02', 368, 43, true, 3727, 306);
 insert into boletim values(46, '2020-05-03', 328, 14, true, 4055, 320);
@@ -81,3 +83,4 @@ insert into boletim values(79, '2020-06-05', 3150, 81, true, 52623, 3573);
 insert into boletim values(80, '2020-06-06', 1237, 92, true, 53860, 3665);
 insert into boletim values(81, '2020-06-07', 938, 49, true, 54798, 3714);
 insert into boletim values(82, '2020-06-08', 2772, 121, true, 57570, 3835);
+insert into boletim values(83, '2020-06-09', 3066, 63, true, 60636, 3898);
