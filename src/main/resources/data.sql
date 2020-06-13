@@ -86,4 +86,5 @@ insert into boletim values(82, '2020-06-08', 2772, 121, true, 57570, 3835);
 insert into boletim values(83, '2020-06-09', 3066, 63, true, 60636, 3898);
 insert into boletim values(84, '2020-06-10', 2769, 82, true, 63405, 3980);
 insert into boletim values(85, '2020-06-11', 1746, 110, true, 65151, 4090);
-insert into boletim values(86, '2020-06-12', 1177, 42, true, 66328, 4132);
+insert into boletim values(86, '2020-06-12', 2325, 91, true, 67476, 4181);
+insert into boletim values(87, '2020-06-13', 980, 10, true, 68456, 4191);
