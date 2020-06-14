@@ -222,6 +222,24 @@ function drawObitosAcumuladosChart(data, totalObitos, totalSrag) {
       scales: {
         yAxes: [
           {
+            type: "logarithmic",
+            ticks: {
+              min: 0,
+              max: 6000,
+              callback: function (value, index, values) {//needed to change the scientific notation results from using logarithmic scale
+                return Number(value.toString());//pass tick values as a string into Number function
+              }
+            },
+            afterBuildTicks: function (pckBarChart) {
+              pckBarChart.ticks = [];
+              pckBarChart.ticks.push(0);
+              pckBarChart.ticks.push(1000);
+              pckBarChart.ticks.push(2000);
+              pckBarChart.ticks.push(3000);
+              pckBarChart.ticks.push(4000);
+              pckBarChart.ticks.push(5000);
+              pckBarChart.ticks.push(6000);
+            },
             scaleLabel: {
               display: true,
               labelString: "Nº de óbitos"
